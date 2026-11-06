@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hastings 1066: what the sources say</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F5F0; --panel:#FFFFFF; --ink:#1F2A2E; --muted:#56615F; --rule:#D6D9CF;
+  --norman:#8E2F3A; --english:#2E5572; --modern:#5E7040; --picture:#9A7418;
+  --sure:#3F6B3A; --debated:#9A5B12;
+  --serif:"Alegreya", Georgia, "Times New Roman", serif;
+  --sans:"Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161B1D; --panel:#1E2528; --ink:#E7E9E2; --muted:#A8B0AC; --rule:#343D40;
+    --norman:#E08A93; --english:#8DB7D6; --modern:#A9BF86; --picture:#E0B85A;
+    --sure:#9CCB94; --debated:#E7AE64;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161B1D; --panel:#1E2528; --ink:#E7E9E2; --muted:#A8B0AC; --rule:#343D40;
+  --norman:#E08A93; --english:#8DB7D6; --modern:#A9BF86; --picture:#E0B85A;
+  --sure:#9CCB94; --debated:#E7AE64;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.125rem;line-height:1.6}
+a{color:var(--english);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--picture);outline-offset:2px;border-radius:2px}
+
+.wrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:3rem;max-width:1120px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+
+/* The stitched timeline */
+nav.band{position:sticky;top:calc(env(safe-area-inset-top,0px) + 1.5rem);align-self:start}
+nav.band h2{font-family:var(--sans);font-size:.95rem;font-weight:700;margin:0 0 1rem;color:var(--muted)}
+nav.band ol{list-style:none;margin:0;padding:0 0 0 1.25rem;position:relative}
+nav.band ol::before{content:"";position:absolute;left:5px;top:.6rem;bottom:.6rem;border-left:3px dashed var(--rule)}
+nav.band li{position:relative;margin:0 0 1rem}
+nav.band li::before{content:"";position:absolute;left:-1.25rem;top:.45rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:3px solid var(--rule)}
+nav.band li.active::before{border-color:var(--norman);background:var(--norman)}
+nav.band a{display:block;text-decoration:none;color:var(--ink);font-weight:500;line-height:1.3}
+nav.band small{display:block;font-family:var(--sans);color:var(--muted);font-size:.85rem}
+nav.band li.active a{color:var(--norman)}
+
+header.hero{margin-bottom:2.5rem;max-width:68ch}
+header.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;font-weight:800;margin:0 0 .75rem;letter-spacing:-.01em}
+header.hero p{margin:.5rem 0;color:var(--muted)}
+
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin:1.5rem 0 0;padding:1rem 1.25rem;background:var(--panel);border:1px solid var(--rule);border-radius:6px;font-family:var(--sans);font-size:.95rem}
+.legend span{display:inline-flex;align-items:center;gap:.45rem}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.sw.n{background:var(--norman)}.sw.e{background:var(--english)}.sw.m{background:var(--modern)}.sw.p{background:var(--picture)}
+
+section.phase{padding:2.5rem 0 1rem;border-top:1px solid var(--rule);max-width:72ch}
+section.phase:first-of-type{border-top:0;padding-top:0}
+.when{font-family:var(--sans);color:var(--muted);font-size:.95rem;margin:0}
+section.phase h2{font-size:2rem;line-height:1.15;margin:.2rem 0 .75rem;font-weight:700}
+.verdict{font-family:var(--sans);font-size:.95rem;font-weight:700;display:inline-block;padding:.15rem .6rem;border-radius:4px;border:1.5px solid currentColor;margin-bottom:.75rem}
+.verdict.sure{color:var(--sure)}
+.verdict.debated{color:var(--debated)}
+.summary{margin:0 0 1.5rem}
+
+.src{background:var(--panel);border:1px solid var(--rule);border-left:6px solid var(--muted);border-radius:4px;padding:1rem 1.25rem;margin:0 0 .9rem}
+.src.n{border-left-color:var(--norman)}.src.e{border-left-color:var(--english)}.src.m{border-left-color:var(--modern)}.src.p{border-left-color:var(--picture)}
+.src h3{font-size:1.15rem;margin:0 0 .15rem;line-height:1.3}
+.src .kind{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .5rem}
+.src p{margin:.35rem 0}
+.src .says{margin:.5rem 0}
+.src .warn{font-size:1rem;color:var(--muted)}
+.src .warn strong{color:var(--ink)}
+
+.tablewrap{overflow-x:auto;margin:1rem 0 1.5rem;border:1px solid var(--rule);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:1rem}
+th,td{text-align:left;vertical-align:top;padding:.7rem .9rem;border-bottom:1px solid var(--rule)}
+th{font-family:var(--sans);font-weight:700;font-size:.95rem;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+
+.tip{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.tip h3{margin:0 0 .5rem;font-size:1.2rem}
+.tip p{margin:.4rem 0}
+
+.snip{margin:.7rem 0 .5rem;padding:.55rem .9rem;border-left:3px solid var(--rule);background:var(--bg);border-radius:0 4px 4px 0}
+.snip p{margin:0;font-style:italic}
+.snip cite{display:block;font-style:normal;font-family:var(--sans);font-size:.88rem;color:var(--muted);margin-top:.2rem}
+footer{max-width:72ch;margin-top:3rem;color:var(--muted);font-size:1rem}
+
+@media (max-width: 860px){
+  .wrap{display:block;padding:0 1.1rem 3rem}
+  nav.band{position:sticky;top:0;z-index:5;background:var(--bg);margin:0 -1.1rem 1.5rem;padding:calc(env(safe-area-inset-top,0px) + .6rem) 1.1rem .6rem;border-bottom:1px solid var(--rule)}
+  nav.band h2{display:none}
+  nav.band ol{display:flex;gap:1.1rem;overflow-x:auto;padding:0;white-space:nowrap;scrollbar-width:none}
+  nav.band ol::before,nav.band li::before{display:none}
+  nav.band li{margin:0}
+  nav.band small{display:none}
+  nav.band a{padding:.35rem 0;border-bottom:3px solid transparent;font-size:1rem}
+  nav.band li.active a{border-bottom-color:var(--norman)}
+  header.hero{margin-top:1rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="band" aria-label="Stages of the battle">
+  <h2>Jump to a stage</h2>
+  <ol>
+    <li><a href="#before">Before the battle<small>Jan to Oct 1066</small></a></li>
+    <li><a href="#armies">The armies line up<small>Morning, 14 Oct</small></a></li>
+    <li><a href="#opening">First attacks and panic<small>Morning</small></a></li>
+    <li><a href="#feigned">Feigned retreats<small>Afternoon</small></a></li>
+    <li><a href="#attrition">Wearing down the wall<small>Late afternoon</small></a></li>
+    <li><a href="#harold">Harold's death<small>Towards dusk</small></a></li>
+    <li><a href="#toolkit">Judging the sources<small>For exam questions</small></a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <h1>Hastings, 1066: what the sources say</h1>
+  <p>Each stage of the battle below has a short summary, a verdict on how certain historians are, and a paragraph on what each source actually says about it.</p>
+  <p>No single source proves what happened. Historians compare accounts written by different people, at different times, for different reasons.</p>
+  <div class="legend" aria-label="Colour key for sources">
+    <span><i class="sw n"></i>Medieval source, Norman or French side</span>
+    <span><i class="sw e"></i>Medieval source, English side</span>
+    <span><i class="sw p"></i>Picture source (Bayeux Tapestry)</span>
+    <span><i class="sw m"></i>Modern historian or reference</span>
+  </div>
+</header>
+<section class="phase" id="before">
+  <p class="when">January to October 1066</p>
+  <h2>Before the battle</h2>
+  <span class="verdict sure">Main events well supported</span>
+  <span class="verdict debated">Papal banner debated</span>
+  <p class="summary">Edward the Confessor died without a son. Harold Godwinson was crowned, but William of Normandy claimed Edward had promised him the throne and that Harold had sworn an oath to support him. William is said to have received a papal banner. Harold defeated Harald Hardrada at Stamford Bridge on 25 September, then had to march south after William landed at Pevensey.</p>
+  <article class="src e">
+    <h3>The Anglo-Saxon Chronicle, entry for 1066</h3>
+    <p class="kind">Medieval source, English. Written by monks.</p>
+    <p class="says">The Chronicle records Edward's death and Harold becoming king, then the Norwegian invasion that Harold defeated at Stamford Bridge. It says William landed at Pevensey around Michaelmas (29 September) and quickly built a castle at Hastings. When Harold heard, he gathered a large army and met William at "the hoary apple tree". Crucially, it says William came against Harold before his army had fully assembled and formed up. The monks saw the English defeat as God's punishment for the people's sins.</p>
+    <p class="warn"><strong>Watch out:</strong> it is very short on the battle itself, and several versions of the Chronicle exist that don't always agree.</p>
+  </article>
+  <article class="src n">
+    <h3>William of Poitiers, Gesta Guillelmi (The Deeds of William)</h3>
+    <p class="kind">Medieval source, Norman. Written about 1071 to 1077.</p>
+    <p class="says">Poitiers presents William as the rightful heir. He says Edward had chosen William and sent Harold, the richest of his subjects, to Normandy to confirm the promise, where Harold swore an oath to support William. When news came that Edward was dead and Harold wore the crown, William decided to avenge the wrong by force. Poitiers praises William as outstanding in bravery and skill as a soldier, someone who led from the front, stopped his men running away and shared their dangers. He is also the only writer of the time to say the Pope sent William a banner as a sign of St Peter's backing.</p>
+    <p class="warn"><strong>Watch out:</strong> he was William's chaplain, wasn't at the battle, and wrote to praise William. He claims William gathered 50,000 volunteers, which historians think is a big exaggeration.</p>
+  </article>
+  <article class="src p">
+    <h3>The Bayeux Tapestry</h3>
+    <p class="kind">Picture source, embroidered about 1067 to 1079.</p>
+    <p class="says">The Tapestry tells the story from 1064, when Edward sends Harold to Normandy. It shows Harold swearing an oath on holy relics in front of William, then Harold being crowned king after Edward's death. It goes on to show William building his fleet, crossing the Channel with horses and landing in England. A banner carried by the Normans is usually identified as the papal banner.</p>
+    <p class="warn"><strong>Watch out:</strong> it was probably made for William's half-brother, Bishop Odo, so it tells the Norman version of events.</p>
+  </article>
+  <article class="src m">
+    <h3>"The Norman Conquest of England, the Papacy, and the Papal Banner" (Haskins Society Journal, 2021)</h3>
+    <p class="kind">Modern academic research.</p>
+    <p class="says">This chapter points out that William of Poitiers is the only writer from the time who says Pope Alexander II backed the invasion, and he mentions the banner only briefly. Building on work by the historians George Garnett and Tom Licence, it argues that many Norman claims to the throne were made up after the conquest. It concludes that it is highly unlikely the Pope gave William a banner. Its reasons are that a pope approving the overthrow of an anointed king is unlikely, that the story relies on Poitiers alone, and that the Church made Norman soldiers do penance for the killing at Hastings afterwards, which doesn't fit a holy war the Pope had blessed.</p>
+  </article>
+  <article class="src m">
+    <h3>Tom Licence, Harold: Warrior King (Yale University Press), reported by Medievalists.net, August 2026</h3>
+    <p class="kind">Modern historian, new research.</p>
+    <p class="says">Licence argues the opposite: the Pope probably did support William, but for political reasons. In 1061 two rival popes were elected, Alexander II, backed by church reformers, and Honorius II, backed by the Holy Roman Empire. A letter from Alexander, surviving in medieval collections of papal texts, accuses the English of turning away from St Peter's protection. Licence reads this as England backing the rival pope. That gave Alexander a reason to support William, and it let William present his invasion as a just war. So the banner may have had more to do with Church politics than with Harold's oath.</p>
+  </article>
+  <article class="src m">
+    <h3>Oak National Academy, "Norman preparations for invasion in 1066"</h3>
+    <p class="kind">GCSE lesson (AQA, Year 10).</p>
+    <p class="says">The lesson defines an oath as a very serious promise made on a holy object, and a papal banner as a symbol from the Pope showing his support. It explains that William believed he had a real claim because in 1051 his cousin Edward the Confessor had proposed him as a possible heir. It then covers how William won support for the invasion, built his fleet, and waited for the right wind to cross the Channel.</p>
+  </article>
+</section>
+
+<section class="phase" id="armies">
+  <p class="when">Morning, 14 October 1066</p>
+  <h2>The armies line up</h2>
+  <span class="verdict sure">Well supported</span>
+  <p class="summary">Harold's army, all on foot, formed a shield wall along the top of the ridge. William's army had archers, infantry and mounted knights, and had to attack uphill.</p>
+  <article class="src m">
+    <h3>English Heritage Battlefield Report: Hastings 1066</h3>
+    <p class="kind">Modern official report that quotes the medieval sources.</p>
+    <p class="says">The report quotes Poitiers, the earliest and most detailed account, saying Harold's army took up position on higher ground, on a hill next to the forest they had just come through. The Anglo-Saxon Chronicle's "hoary apple tree" is usually identified as Caldbec Hill, just north of the ridge where Battle Abbey now stands. Historians assume Harold then moved his troops forward and lined them up east to west along the crest of Senlac Ridge to wait for the Normans. How long the English line was depends on how big the army was, which is still heavily debated.</p>
+  </article>
+  <article class="src m">
+    <h3>English Heritage, Battle of Hastings quiz</h3>
+    <p class="kind">Modern, written for the public.</p>
+    <p class="says">English Heritage describes the housecarls as the military elite of Anglo-Saxon England: highly trained soldiers, many of them nobles, who formed Harold's bodyguard. Their favourite weapon was a long-handled battleaxe that could cut off the head of a man or a horse. The English rode to battle but fought on foot, and English Heritage calls the horse decisive, because only the Normans could fight from horseback. The battle lasted over nine hours, very long for a medieval battle, and the battlefield is about eight miles from Hastings itself.</p>
+  </article>
+  <article class="src m">
+    <h3>Wikipedia, "Battle of Hastings"</h3>
+    <p class="kind">Modern reference.</p>
+    <p class="says">Both armies are usually estimated at about 7,000 to 8,000 men. Harold's army was entirely infantry and was placed on Senlac Hill, across the road from Hastings to London, with the great Weald forest behind it and a long slope falling away in front. William's army combined infantry, archers and cavalry, and included Bretons, Flemings and French as well as Normans.</p>
+    <p class="warn"><strong>Watch out:</strong> don't quote Wikipedia in an exam. Use it to find the proper sources it lists.</p>
+  </article>
+</section>
+
+<section class="phase" id="opening">
+  <p class="when">Morning</p>
+  <h2>First attacks and the Breton panic</h2>
+  <span class="verdict sure">Panic and William’s rally well supported</span>
+  <span class="verdict debated">Order of events debated</span>
+  <p class="summary">Norman arrows, infantry and cavalry all failed to break the shield wall. The Bretons on the left fled downhill and a rumour spread that William was dead. William lifted his helmet to show he was alive, and English soldiers who had chased the Bretons were cut down.</p>
+  <article class="src n">
+    <h3>William of Poitiers, Gesta Guillelmi</h3>
+    <p class="kind">Medieval source, Norman.</p>
+    <p class="says">Poitiers gives the traditional version. The English, packed tightly on the high ground and armed with weapons that cut through shields, beat back the first Norman attacks. The Breton left wing then gave way, and the panic spread through much of the army when men came to believe William had been killed. William rode among them with his head bare, shouted that he was alive and would win with God's help, and turned them back to cut down the English who had followed them down the hill.</p>
+    <p class="warn"><strong>Watch out:</strong> Poitiers includes stories that are hard to believe, such as William beating a force of 1,000 with only 50 knights, and he compares William to Julius Caesar. He wants William to look like a perfect knight.</p>
+  </article>
+  <article class="src m">
+    <h3>English Heritage, Battle of Hastings quiz</h3>
+    <p class="kind">Modern.</p>
+    <p class="says">English Heritage tells the story the other way round: some of William's troops on the left flank fled in panic because they heard a rumour that he had been killed. To stop the panic spreading, William rode out in front of them, raised his helmet so they could see his face, and shouted that he was alive and would conquer with God's help. Comparing this with Poitiers shows that historians aren't sure which came first, the flight or the rumour.</p>
+  </article>
+  <article class="src n">
+    <h3>Guy of Amiens (probably), Carmen de Hastingae Proelio (Song of the Battle of Hastings)</h3>
+    <p class="kind">Medieval source, French. Possibly written by March 1067.</p>
+    <p class="says">The Carmen may be the earliest account, written within six months of the battle. Guy was French and gives the French contingent the credit. In his version it is the French, whom he calls skilled in stratagems and warfare, who pretend to flee and then cut down the English who chase them, while the Normans are the ones who flee in real panic. Historians have noticed that when Poitiers tells the same stories he nearly always exaggerates in William's favour: where the Carmen has William lose two horses, Poitiers says three.</p>
+    <p class="warn"><strong>Watch out:</strong> the date is disputed. Some historians think it was written much later, in the 12th century.</p>
+  </article>
+  <article class="src p">
+    <h3>The Bayeux Tapestry</h3>
+    <p class="kind">Picture source.</p>
+    <p class="says">The Tapestry shows Norman knights charging uphill at English soldiers standing on foot behind their shields. Bishop Odo is shown rallying the young soldiers with a club. Then comes the famous scene of William pushing his helmet up so his men can see his face, with the Latin caption "HIC EST DUX WILELM", meaning "Here is Duke William".</p>
+  </article>
+</section>
+
+<section class="phase" id="feigned">
+  <p class="when">Afternoon</p>
+  <h2>Feigned retreats</h2>
+  <span class="verdict debated">Debated</span>
+  <p class="summary">Norman writers say William deliberately pretended to retreat, luring English soldiers off the ridge and killing them. Historians disagree about how many there were and whether they were planned or real panics made to look clever afterwards.</p>
+  <article class="src n">
+    <h3>William of Malmesbury, Deeds of the Kings of the English</h3>
+    <p class="kind">Medieval source, written in the 12th century.</p>
+    <p class="says">Malmesbury says that before the battle William put his mail coat on back to front by mistake and laughed it off, and that the Song of Roland was sung to inspire the soldiers. He describes the fighting as fierce, with neither side giving ground for most of the day. Seeing this, William gave his troops a signal to pretend to flee and withdraw. The tightly packed English line broke open as men ran after them to cut them down, and this brought about its own destruction, because the Normans turned round, attacked the disordered English and forced them to run. He ends with Harold killed by an arrow and the English fleeing until nightfall.</p>
+    <p class="warn"><strong>Watch out:</strong> written about 60 years after the battle and based mainly on Poitiers, so it isn't independent evidence.</p>
+  </article>
+  <article class="src m">
+    <h3>Encyclopaedia Romana (University of Chicago), on the Carmen and Poitiers</h3>
+    <p class="kind">Modern comparison of the two medieval sources.</p>
+    <p class="says">The Carmen describes one feigned flight, by the French, after which they turned on the pursuing English and slaughtered them. William of Poitiers tells the stratagem three times and credits it to the Normans instead. The Carmen's manuscript was lost around 1130 and not rediscovered until 1826, so most medieval accounts were based on Poitiers' version. That is why the Norman feigned retreat became the traditional story.</p>
+  </article>
+  <article class="src m">
+    <h3>Landscapes of the Normans, "Reading and writing Hastings: the battle and its sources" (2016)</h3>
+    <p class="kind">Modern historian, from a university research project.</p>
+    <p class="says">The historian argues that trying to work out exactly what happened on 14 October is the wrong question. It is more useful to ask about the context each account was written in: its audience, where the writer got his information, what kind of writing it is, and when it was written. English sources mention the battle only briefly. Later 12th-century writers such as Orderic Vitalis, Henry of Huntingdon and William of Malmesbury drew on earlier accounts, especially Poitiers, and added their own ideas with hindsight. Medieval battles were as confusing as modern ones, and reports from them were just as contradictory. Questions such as how many feigned flights there were may never be answered.</p>
+  </article>
+  <article class="src m">
+    <h3>Oak National Academy, "Norman weapons, armour and tactics"</h3>
+    <p class="kind">GCSE lesson (AQA, KS4).</p>
+    <p class="says">The lesson teaches that William tried different tactics until he found ones that worked, and that one of them may have been a feigned retreat. It warns that a common misconception is thinking we know for certain he used it, because the best sources say different things. It puts the Norman tactics in this order: a direct attack by archers, foot soldiers and cavalry; the feigned retreat; cavalry surrounding and killing the English who chased them; archers weakening the shield wall further; and knights cutting down scattered groups of English.</p>
+  </article>
+</section>
+
+<section class="phase" id="attrition">
+  <p class="when">Late afternoon</p>
+  <h2>Wearing down the shield wall</h2>
+  <span class="verdict sure">General picture accepted</span>
+  <span class="verdict debated">Details reconstructed</span>
+  <p class="summary">Hours of fighting thinned the English line. Norman archers shot high so arrows fell behind the front rank, while infantry and knights kept attacking. The shield wall got shorter until the Normans could reach the top of the ridge.</p>
+  <article class="src m">
+    <h3>English Heritage Battlefield Report: Hastings 1066</h3>
+    <p class="kind">Modern official report.</p>
+    <p class="says">The report explains that after the feigned flights, the Normans remembered that running away had already given them an advantage once. A savage battle of attrition followed. Norman archers shot their arrows upwards so they fell behind the English shields, while William's infantry and knights kept battering at an English line that was steadily getting shorter. It notes that Poitiers, unsurprisingly, gives William personal credit for the victory, while admitting the English army was still strong and very hard to overcome.</p>
+  </article>
+  <div class="tip">
+    <h3>Be careful here</h3>
+    <p>Details such as the English closing ranks or Harold moving into the front line come from modern historians piecing things together, not from a medieval eyewitness. In an essay, say "historians think" rather than stating them as fact.</p>
+  </div>
+</section>
+
+<section class="phase" id="harold">
+  <p class="when">Towards dusk</p>
+  <h2>Harold's death</h2>
+  <span class="verdict sure">His death is certain</span>
+  <span class="verdict debated">How he died is debated</span>
+  <p class="summary">Harold was killed along with his brothers Gyrth and Leofwine, and the English army collapsed. The arrow-in-the-eye story is famous, but the earliest sources don't mention it.</p>
+  <article class="src e">
+    <h3>The Anglo-Saxon Chronicle, entry for 1066</h3>
+    <p class="kind">Medieval source, English.</p>
+    <p class="says">The Chronicle says only that Harold came from the north and fought William before all his army had arrived, and that he fell there along with his two brothers, Gyrth and Leofwine. It gives no details of how he died.</p>
+  </article>
+  <article class="src n">
+    <h3>Carmen de Hastingae Proelio and William of Jumièges</h3>
+    <p class="kind">Medieval sources, French and Norman, written before about 1070.</p>
+    <p class="says">Neither mentions an arrow. William of Jumièges, writing in early 1070, says only that Harold was killed by mortal wounds. The Carmen gives a detailed and brutal account: William saw Harold on the hilltop cutting down Norman soldiers, called three knights (Eustace of Boulogne, Hugh of Ponthieu and a man called Giffard), and the four of them attacked the king together. One drove a lance through his shield and chest, another cut off his head, a third speared his stomach, and the fourth cut off his leg.</p>
+    <p class="warn"><strong>Watch out:</strong> the Carmen was written to praise the French and William, so it may exaggerate William's personal role.</p>
+  </article>
+  <article class="src m">
+    <h3>Medievalists.net, "Did King Harold really get an arrow in the eye?" (2022)</h3>
+    <p class="kind">Modern historian.</p>
+    <p class="says">The article sets the two earliest candidates side by side: the Anglo-Saxon Chronicle and the Carmen. It explains that the Carmen survives in just one copy, made in the early 12th century and now in Brussels. Some historians, following R.H.C. Davis in 1978, think it was written in the 12th century, while its editors Catherine Morton and Hope Muntz argue it is from the 11th. Either way, the Carmen shows Harold being hacked to death and never mentions an arrow striking him anywhere.</p>
+  </article>
+  <article class="src m">
+    <h3>History Today, "King Harold: shot through the eye and who’s to blame?"</h3>
+    <p class="kind">Modern historian, respected history magazine.</p>
+    <p class="says">The article points out that the story of Harold being hacked to pieces by knights appears in many accounts from the period. It then asks where the arrow legend came from, tracing it to later chroniclers and to readings of the Bayeux Tapestry, and questions whether it is based on fact at all.</p>
+  </article>
+  <article class="src p">
+    <h3>The Bayeux Tapestry</h3>
+    <p class="kind">Picture source.</p>
+    <p class="says">Above the death scene is the Latin caption "HIC HAROLD REX INTERFECTUS EST", meaning "Here King Harold is killed". Under it are two figures: one appears to hold an arrow near his eye, and the next is being cut down by a knight on horseback. This scene is where the arrow-in-the-eye story mainly comes from.</p>
+    <p class="warn"><strong>Watch out:</strong> it isn't clear which figure is Harold, or whether both are. Some historians think the arrow was altered when the Tapestry was repaired in the 19th century.</p>
+  </article>
+</section>
+
+<!-- 7 -->
+<section class="phase" id="toolkit">
+  <p class="when">For source and interpretation questions</p>
+  <h2>Judging the sources</h2>
+  <p class="summary">Use this table for "how useful" and "how reliable" questions. Think about who wrote it, when, and why.</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Source</th><th>Who and when</th><th>Useful because</th><th>Be careful because</th></tr></thead>
+    <tbody>
+      <tr><td>Anglo-Saxon Chronicle</td><td>English monks, soon after 1066</td><td>The only English view from the time</td><td>Very brief on the battle; versions differ</td></tr>
+      <tr><td>Carmen de Hastingae Proelio</td><td>Probably Guy, Bishop of Amiens, possibly 1067</td><td>Possibly the earliest account; detailed on Harold's death</td><td>Praises the French; some historians date it much later</td></tr>
+      <tr><td>William of Jumièges</td><td>Norman monk, about 1070</td><td>Early and close to the Norman court</td><td>Short; written for William</td></tr>
+      <tr><td>William of Poitiers</td><td>William's chaplain, about 1071 to 1077</td><td>The most detailed account; knew Norman soldiers</td><td>Not at the battle; flatters William; only source for the papal banner</td></tr>
+      <tr><td>Bayeux Tapestry</td><td>English embroiderers, about 1067 to 1079</td><td>Shows weapons, armour and tactics visually</td><td>Norman viewpoint; pictures can be read in different ways; repaired</td></tr>
+      <tr><td>Malmesbury, Huntingdon, Orderic</td><td>12th-century writers</td><td>Add detail and show how the story was remembered</td><td>Written decades later; often copy Poitiers</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="tip">
+    <h3>A strong exam sentence</h3>
+    <p>"Poitiers is useful for the Norman tactics because he knew William's soldiers, but as William's chaplain writing to praise him, he may have presented panicked retreats as clever planning. The Carmen, possibly written earlier, gives the credit to the French instead, which suggests each writer favoured his own side."</p>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+(function(){
+  try{
+    var links = document.querySelectorAll('nav.band a');
+    var map = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a.parentElement; });
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          Object.keys(map).forEach(function(k){ map[k].classList.remove('active'); });
+          var li = map[e.target.id];
+          if(li){ li.classList.add('active'); if(li.scrollIntoView && window.innerWidth<=860){ li.scrollIntoView({block:'nearest',inline:'center'}); } }
+        }
+      });
+    },{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('section.phase').forEach(function(s){ obs.observe(s); });
+  }catch(err){}
+})();
+</script>
+</body>
+</html>
